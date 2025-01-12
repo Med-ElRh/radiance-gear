@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    transition: all 300ms;
+    color: white;
+}
+
+:root {
+    --primary: #1d1d1d;
+    --secondary: #273b40;
+    --grey: #3c4748;
+    --lightblue: #cae9ea;
+    --green: #208c8c;
+}
+
+body {
+    background-color: var(--primary);
+}
+
+.App {
+    margin: 0px 10%;
+}
+
+@media (max-width: 768px) {
+    .App {
+        margin: 4%;
+    }
+}
+
