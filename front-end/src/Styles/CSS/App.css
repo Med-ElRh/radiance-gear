@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Pixelify+Sans:wght@400..700&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -8,15 +7,16 @@
 }
 
 :root {
-    --primary: #1d1d1d;
-    --secondary: #273b40;
-    --grey: #3c4748;
+    --primary: #0078FF;
+    --secondary: #1E1E1E;
+    --grey: #353535;
+    --lightgrey: #F2F2F2;
     --lightblue: #cae9ea;
-    --green: #208c8c;
+    --green: #00FF7F;
 }
 
 body {
-    background-color: var(--primary);
+    background-color: var(--secondary);
 }
 
 .App {

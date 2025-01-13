@@ -2,11 +2,22 @@ import { useState } from "react";
 import { BiLogIn, BiSearch } from "react-icons/bi";
 import { PiList } from "react-icons/pi";
 import { IoClose } from "react-icons/io5";
-import { IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import ShopComponent from "../Elements/ShopComponent";
 
 
 const MobileNav = () => {
     const [showNav, setShowNav] = useState(false);
+    const [sideShop, setSideShop] = useState(false);
+
+    const handleShowShop = () => {
+        sideShop ? setSideShop(false) : setSideShop(true);
+    }
+
+    const handleSideNavClose = () => {
+        setShowNav(false);
+        setSideShop(false);
+    }
 
     return (
         <>        
@@ -29,36 +40,37 @@ const MobileNav = () => {
                 <BiSearch size={24} />
             </div>
         </div>
-        <div>
+        <div className={`navside-container ${showNav ? "nav-visible" : ""}`}>
             {/* Items */}
-            <div className={`nav-side ${showNav ? "nav-visible" : ""}`}>
-                <div className="nav-close" onClick={() => setShowNav(false)}>
-                    <IoClose size={24} />
-                </div>
+            <div className={`nav-side `}>
+                {/* Sidebar items */}
                 <div className="navbar-items navbar-items-small">
                     <div 
                     onClick={() => window.location.href = "/"} 
                     className="navitem navitem-small">
                         <p>Home</p>
-                        <p><IoIosArrowForward size={24} /></p>
                     </div>
-                    <div 
-                    onClick={() => window.location.href = "/store"} 
-                    className="navitem navitem-small">
-                        <p>Store</p>
-                        <p><IoIosArrowForward size={24} /></p>
+                    <div className="navitem navitem-small">
+                        <p>Shop</p>
+                        <p className="navshop-arrow" onClick={handleShowShop}>
+                            {sideShop ? (
+                                <IoIosArrowUp size={24} />
+                            ) : (
+                                <IoIosArrowDown size={24} />
+                            )}
+                        </p>
                     </div>
+                    <ShopComponent visible={sideShop} />
                     <div 
                     onClick={() => window.location.href = "/contact"} 
                     className="navitem navitem-small">
-                        <p>Contact</p>
-                        <p><IoIosArrowForward size={24} /></p>
+                        <p>Support</p>
                     </div>
-                </div>
-
-                <div className="">
-                    
-                </div>
+                </div>                
+            </div>
+            {/* Sidebar close button */}
+            <div className={`nav-close`} onClick={handleSideNavClose}>
+                <IoClose size={30} />
             </div>
         </div>
         </>

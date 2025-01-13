@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { BiLogIn, BiSearch } from "react-icons/bi";
+import ShopComponent from "../Elements/ShopComponent";
 
 const DesktopNav = () => {
+    const [hoveredItem, setHoveredItem] = useState(false);
+    
     return (
         <div className="navbar navbar-large">
             {/* Logo */}
             <div
             className="navlogo navlogo-large"
             onClick={() => window.location.href = "/"}
+            onMouseEnter={() => setHoveredItem(false)}
             >
                 <p>Radiance</p>
                 <p>Gear</p>
@@ -17,18 +21,21 @@ const DesktopNav = () => {
             <div className="navbar-items navbar-items-large">
                 <div 
                 onClick={() => window.location.href = "/"} 
-                className="navitem navitem-large">
+                className="navitem navitem-large"
+                onMouseEnter={() => setHoveredItem(false)}>
                     Home
                 </div>
                 <div 
                 onClick={() => window.location.href = "/store"} 
-                className="navitem navitem-large">
-                    Store
+                className="navitem navitem-large"
+                onMouseEnter={() => {setHoveredItem(true)}} >
+                    Shop
                 </div>
                 <div 
                 onClick={() => window.location.href = "/contact"} 
-                className="navitem navitem-large">
-                    Contact
+                className="navitem navitem-large"
+                onMouseEnter={() => setHoveredItem(false)}>
+                    Support
                 </div>
             </div>
 
@@ -40,6 +47,9 @@ const DesktopNav = () => {
                     <BiLogIn size={24} />
                 </div>
             </div>
+
+            {/* Shop Div */}
+            <ShopComponent visible={hoveredItem} unhover={() => {setHoveredItem(false)}} />
         </div>
     )
 }
